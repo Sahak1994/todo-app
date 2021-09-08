@@ -10,22 +10,22 @@ import {TodosContextProvider} from 'context/todos-context';
 function App() {
 
   const routes = (
+      <TodosContextProvider>
     <Switch>
       <Route path='/' exact>
         <AddTodo />
       </Route>
-      <TodosContextProvider>
         <Route path='/lists' exact>
             <TodoList />
         </Route>
         <Route path='/lists/:id'>
           <ItemDescription />
         </Route>
-      </TodosContextProvider>
-      <Route path='*'>
+      <Route>
         <EmptyPage />
       </Route>
     </Switch>
+      </TodosContextProvider>
   );
 
   return (

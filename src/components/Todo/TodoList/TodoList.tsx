@@ -2,6 +2,7 @@ import {useContext, Fragment} from 'react';
 
 import TodoItem from 'components/Todo/TodoList/TodoItem/TodoItem';
 import TodosContext from 'context/todos-context';
+import Loader from 'components/UI/Loader/Loader';
 
 import classes from './TodoList.module.css';
 
@@ -12,21 +13,15 @@ const TodoList = () => {
     error,
   } = useContext(TodosContext);
 
-  let content = null
+  let content = null;
 
   if (loading) {
-    content = <div className={classes.Loading}>Loading...</div>
-  }
-
-  if (!loading && error) {
+    content = <div className={classes.Loading}><Loader /></div>
+  } else if (error) {
     content = <div className={classes.Error}>{error}</div>
-  }
-
-  if (!loading && !error && todos && todos.length === 0) {
-    content = <div className={classes.Empty}>There are no data to show!</div>
-  }
-
-  if (!loading && !error && todos && todos.length > 0) {
+  } else if (todos && todos.length === 0) {
+    content = <div className={classes.Empty}>There is no data to show!</div>
+  } else if (todos && todos.length > 0) {
     content = (
       <Fragment>
         <div className={classes.Header}>

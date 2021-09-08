@@ -48,7 +48,6 @@
   justify-content: center;
   margin-top: 3px;
   cursor: pointer;
-  animation: status 0.5s linear;
 }
 
 .done {
@@ -57,26 +56,4 @@
 
 .no-done {
   background-color: tomato;
-}
-
-.rotate {
-  animation: rotate 0.5s linear;
-}
-
-@keyframes status {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

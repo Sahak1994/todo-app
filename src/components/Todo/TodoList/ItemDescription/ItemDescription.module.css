@@ -27,3 +27,9 @@
   text-align: center;
   flex: 1;
 }
+
+.Loading {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}

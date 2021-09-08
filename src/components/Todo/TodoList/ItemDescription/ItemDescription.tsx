@@ -2,6 +2,7 @@ import {useState, useContext, Fragment, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 
 import TodosContext from 'context/todos-context';
+import Loader from 'components/UI/Loader/Loader';
 
 import classes from './ItemDescription.module.css';
 
@@ -27,11 +28,11 @@ const ItemDescription = () => {
   let content = null;
 
   if (loading) {
-    content = <div>Loading...</div>
+    content = <div className={classes.Loading}><Loader /></div>
   } else if (error) {
     content = <div>{error}</div>
   } else if (todos && (todos.length === 0 || !currentTodo) && !firstMount) {
-    content = <div>There are no data to show!</div>
+    content = <div>There is no data to show!</div>
   } else if (todos.length > 0 && currentTodo) {
     content = (
       <Fragment>
