@@ -1,0 +1,82 @@
+.TodoItem {
+  display: flex;
+  width: 100%;
+}
+
+.Link {
+  color: #212121;
+  text-decoration: none;
+}
+
+.Link:active,
+.Link:focus {
+  color: unset;
+}
+
+.Name {
+  width: 420px;
+}
+
+.Status {
+  margin-left: 3rem;
+}
+
+.Name span,
+.Status span {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.Name div {
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid #ccc;
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+
+.Status div {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  cursor: pointer;
+  animation: status 0.5s linear;
+}
+
+.done {
+  background-color: chartreuse;
+}
+
+.no-done {
+  background-color: tomato;
+}
+
+.rotate {
+  animation: rotate 0.5s linear;
+}
+
+@keyframes status {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,5 @@
+.Content {
+  margin-top: 72px;
+  display: flex;
+  height: calc(100vh - 72px);
+}

@@ -1,0 +1,41 @@
+.TodoList {
+  display: flex;
+  flex-direction: column;
+}
+
+.Grow {
+  flex: 1;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.Lists {
+  padding-top: 150px;
+  padding: 0 30px;
+  max-height: calc(100vh - 70px);
+  overflow: auto;
+  width: 100%;
+  flex: 1;
+}
+
+.Lists::-webkit-scrollbar {
+  width: 0 !important
+}
+
+.Element {
+  display: flex;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.Loading,
+.Error,
+.Empty {
+  margin: auto;
+}

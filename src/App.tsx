@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Switch, Route} from 'react-router-dom';
+
+import Layout from 'components/Layout/Layout';
+import AddTodo from 'components/Todo/AddTodo/AddTodo';
+import TodoList from 'components/Todo/TodoList/TodoList';
+import ItemDescription from 'components/Todo/TodoList/ItemDescription/ItemDescription';
+import EmptyPage from 'components/EmptyPage/EmptyPage';
+import {TodosContextProvider} from 'context/todos-context';
 
 function App() {
+
+  const routes = (
+    <Switch>
+      <Route path='/' exact>
+        <AddTodo />
+      </Route>
+      <TodosContextProvider>
+        <Route path='/lists' exact>
+            <TodoList />
+        </Route>
+        <Route path='/lists/:id'>
+          <ItemDescription />
+        </Route>
+      </TodosContextProvider>
+      <Route path='*'>
+        <EmptyPage />
+      </Route>
+    </Switch>
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      {routes}
+    </Layout>
   );
 }
 

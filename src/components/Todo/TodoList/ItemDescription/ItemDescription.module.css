@@ -1,0 +1,29 @@
+.Description {
+  flex: 1;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  line-height: 3rem;
+  /* width: 600px; */
+}
+
+.Name span,
+.Date span,
+.Status span {
+  font-size: 14px;
+  color: #212121;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-weight: normal;
+}
+
+.Name,
+.Date,
+.Status {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ItemsCenter {
+  margin: auto;
+  text-align: center;
+  flex: 1;
+}
