@@ -7,12 +7,12 @@ import classes from './ItemDescription.module.css';
 
 const ItemDescription = () => {
   const { id }: ParamsType = useParams();
+  const [firstMount, setFirstMount] = useState<boolean>(true);
   const [currentTodo, setCurrentTodo] = useState<Todo | null>(null);
   const { todos, loading, error } = useContext(TodosContext);
 
-  console.log(todos)
-
   useEffect(() => {
+    firstMount && setFirstMount(false);
     if (todos && todos.length > 0) {
       const currentTodo = todos.find(todo => todo.id === id);
 
@@ -22,23 +22,17 @@ const ItemDescription = () => {
         setCurrentTodo(null);
       }
     }
-  }, [id, todos]);
+  }, [id, todos, firstMount]);
 
   let content = null;
 
   if (loading) {
     content = <div>Loading...</div>
-  }
-
-  if (!loading && error) {
+  } else if (error) {
     content = <div>{error}</div>
-  }
-
-  if (!loading && !error && todos && (todos.length === 0)) {
+  } else if (todos && (todos.length === 0 || !currentTodo) && !firstMount) {
     content = <div>There are no data to show!</div>
-  }
-
-  if (!error && !loading && todos.length > 0 && currentTodo) {
+  } else if (todos.length > 0 && currentTodo) {
     content = (
       <Fragment>
         <p className={classes.Name}><span>Name: </span>{currentTodo.name}</p>

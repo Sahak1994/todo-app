@@ -12,6 +12,7 @@ const TodosContext = React.createContext({
   todos: [{id: '', name: '', status: '', date: ''}],
   loading: false,
   error: null,
+  onUpdateTodoStatus: (id: string, status: string) => {},
 });
 
 
@@ -24,12 +25,28 @@ interface TodosContextInterface {
   todos: Todos[],
   loading: boolean;
   error: any,
+  onUpdateTodoStatus: (id: string, status: string) => void
 }
 
 export const TodosContextProvider: React.FC<TodosContextProviderProps> = (props) => {
   const [todos, setTodos] = useState<Todos[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const updateTodoStatus = (id: string, status: string) => {
+    const currentTodo = todos.find(todo => todo.id === id);
+    const currentTodoIndex = todos.findIndex(todo => todo.id === id);
+
+    if (currentTodo) {
+      setTodos(prevTodos => {
+        return [
+          ...prevTodos.slice(0, currentTodoIndex),
+          {...currentTodo, status },
+          ...prevTodos.slice(currentTodoIndex + 1),
+        ]
+      })
+    }
+  }
 
   useEffect(() => {
     axios('https://todo-app-b3600-default-rtdb.firebaseio.com/todos.json')
@@ -60,6 +77,7 @@ export const TodosContextProvider: React.FC<TodosContextProviderProps> = (props)
     todos,
     loading,
     error,
+    onUpdateTodoStatus: updateTodoStatus,
   }
 
     return (
