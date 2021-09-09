@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-interface Todos {
+interface Todo {
   id: string
   name: string
   date: string
@@ -13,6 +13,7 @@ const TodosContext = React.createContext({
   loading: false,
   error: null,
   onUpdateTodoStatus: (id: string, status: string) => {},
+  onUpdateAddedTodoItem: (todo: Todo) => {},
 });
 
 
@@ -22,14 +23,15 @@ interface TodosContextProviderProps {
 }
 
 interface TodosContextInterface {
-  todos: Todos[],
+  todos: Todo[];
   loading: boolean;
-  error: any,
-  onUpdateTodoStatus: (id: string, status: string) => void
+  error: any;
+  onUpdateTodoStatus: (id: string, status: string) => void;
+  onUpdateAddedTodoItem: (todo: Todo) => void;
 }
 
 export const TodosContextProvider: React.FC<TodosContextProviderProps> = (props) => {
-  const [todos, setTodos] = useState<Todos[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,6 +48,10 @@ export const TodosContextProvider: React.FC<TodosContextProviderProps> = (props)
         ]
       })
     }
+  }
+
+  const updateAddedTodoItem = (todo: Todo) => {
+    setTodos(prevTodos => prevTodos.concat(todo));
   }
 
   useEffect(() => {
@@ -78,6 +84,7 @@ export const TodosContextProvider: React.FC<TodosContextProviderProps> = (props)
     loading,
     error,
     onUpdateTodoStatus: updateTodoStatus,
+    onUpdateAddedTodoItem: updateAddedTodoItem,
   }
 
     return (

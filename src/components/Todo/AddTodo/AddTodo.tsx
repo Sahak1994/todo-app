@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { injectStyle } from "react-toastify/dist/inject-style";
+
+import TodosContext from 'context/todos-context';
 
 import classes from './AddTodo.module.css';
 
 const AddTodo = () => {
   const [todoText, setTodoText] = useState<string>('');
+  const {onUpdateAddedTodoItem} = useContext(TodosContext);
 
   if (typeof window !== "undefined") {
     injectStyle();
@@ -34,8 +37,13 @@ const AddTodo = () => {
     }
 
     axios.post('https://todo-app-b3600-default-rtdb.firebaseio.com/todos.json', result)
-      .then(result => {
+      .then((res) => {
         setTodoText('');
+
+        onUpdateAddedTodoItem({
+          id: res.data.name,
+          ...result,
+        })
         
         toast.success("Todo Added Successfully", {
           autoClose: 2000,
