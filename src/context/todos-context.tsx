@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import axios from 'api/axios';
 
 interface Todo {
   id: string
@@ -55,7 +55,7 @@ export const TodosContextProvider: React.FC<TodosContextProviderProps> = (props)
   }
 
   useEffect(() => {
-    axios('https://todo-app-b3600-default-rtdb.firebaseio.com/todos.json')
+    axios('/todos.json')
       .then(result => {
         const formatedData = [];
 

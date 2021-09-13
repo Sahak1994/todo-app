@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import axios from 'axios';
+import axios from 'api/axios';
 
 import TodosContext from 'context/todos-context';
 import themeContext from 'context/theme-context';
@@ -47,7 +47,7 @@ const AddTodo = () => {
       date,
     }
 
-    axios.post('https://todo-app-b3600-default-rtdb.firebaseio.com/todos.json', result)
+    axios.post('/todos.json', result)
       .then((res) => {
         setTodoText('');
 

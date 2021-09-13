@@ -1,6 +1,6 @@
 import {useContext, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import axios from 'axios';
+import axios from 'api/axios';
 
 import { ToastContainer, toast } from 'react-toastify';
 import { injectStyle } from "react-toastify/dist/inject-style";
@@ -30,7 +30,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
 
   const statusChangeToggle = () => {
     setStatusLoading(true);
-    axios.patch(`https://todo-app-b3600-default-rtdb.firebaseio.com/todos/${id}.json`, {
+    axios.patch(`/todos/${id}.json`, {
       status: status === 'completed' ? 'incompleted' : 'completed',
     })
       .then(result => {
