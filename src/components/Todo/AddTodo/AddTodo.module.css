@@ -32,8 +32,3 @@
   border-radius: 8px;
   cursor: pointer;
 }
-
-.Form button:hover,
-.Form button:active {
-  background-color: rgba(127, 255, 212, 0.5);
-}

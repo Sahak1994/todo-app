@@ -1,15 +1,26 @@
 import React, {useState, useContext} from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import { injectStyle } from "react-toastify/dist/inject-style";
 
 import TodosContext from 'context/todos-context';
+import themeContext from 'context/theme-context';
+
+import { ToastContainer, toast } from 'react-toastify';
+import { injectStyle } from "react-toastify/dist/inject-style";
 
 import classes from './AddTodo.module.css';
 
 const AddTodo = () => {
   const [todoText, setTodoText] = useState<string>('');
   const {onUpdateAddedTodoItem} = useContext(TodosContext);
+  const theme = useContext(themeContext);
+
+  const {
+    theme: {palette: {secondary: {dark}}}
+  } = theme;
+
+  const buttonStyle = {
+    backgroundColor: dark,
+  }
 
   if (typeof window !== "undefined") {
     injectStyle();
@@ -69,7 +80,7 @@ const AddTodo = () => {
           type='text' 
           value={todoText} 
           onChange={onInputChange} />
-        <button>Add</button>
+        <button style={buttonStyle}>Add</button>
       </form>
       <ToastContainer />
     </div>

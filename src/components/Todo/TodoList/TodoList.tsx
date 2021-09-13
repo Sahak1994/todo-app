@@ -1,7 +1,8 @@
 import {useContext, Fragment} from 'react';
 
-import TodoItem from 'components/Todo/TodoList/TodoItem/TodoItem';
 import TodosContext from 'context/todos-context';
+
+import TodoItem from 'components/Todo/TodoList/TodoItem/TodoItem';
 import Loader from 'components/UI/Loader/Loader';
 
 import classes from './TodoList.module.css';

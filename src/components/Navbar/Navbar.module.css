@@ -2,7 +2,6 @@
   width: 15%;
   min-width: 6.5rem;
   max-width: 9.5rem;
-  background-color: darkkhaki;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,11 +18,6 @@
 .Link a {
   text-decoration: none;
   padding: 8px 5px;
-  color: #212121;
   font-weight: bold;
   border-radius: 8px;
-}
-
-.ActiveClass {
-  background-color: aquamarine;
 }

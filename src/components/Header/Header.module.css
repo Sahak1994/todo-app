@@ -2,11 +2,11 @@
   height: 72px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-weight: bold;
   font-size: 32px;
+  padding: 0 20px;
   font-style: italic;
-  background-color: aquamarine;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
   position: fixed;
   left: 0;
