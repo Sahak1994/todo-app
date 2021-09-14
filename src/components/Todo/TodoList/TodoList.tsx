@@ -1,4 +1,5 @@
 import {useContext, Fragment} from 'react';
+import { useTranslation } from 'react-i18next';
 
 import TodosContext from 'context/todos-context';
 
@@ -8,6 +9,7 @@ import Loader from 'components/UI/Loader/Loader';
 import classes from './TodoList.module.css';
 
 const TodoList = () => {
+  const {t} = useTranslation();
   const {
     todos, 
     loading, 
@@ -26,8 +28,8 @@ const TodoList = () => {
     content = (
       <Fragment>
         <div className={classes.Header}>
-          <span>Name</span>
-          <span>Status</span>
+          <span>{t('name')}</span>
+          <span>{t('status')}</span>
         </div>
         <ul className={classes.Lists}>
           {todos.map(todo => {

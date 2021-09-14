@@ -1,0 +1,17 @@
+{
+  "heading": "Мое приложение Todo",
+  "nav_add": "Добавить Todo",
+  "nav_list": "Список дел",
+  "add": "Добавлять",
+  "primary": "Начальный",
+  "light": "Свет",
+  "dark": "Темный",
+  "name": "Имя",
+  "status": "Положение",
+  "completed": "завершенный",
+  "incompleted": "незавершенный",
+  "created_at": "Создано в",
+  "success_message_add": "Todo успешно добавлен",
+  "smth_went_wrong": "Что-то пошло не так",
+  "status_changed_message": "Статус изменен"
+}

@@ -1,0 +1,17 @@
+{
+  "heading": "Mon application à faire",
+  "nav_add": "Ajouter une tâche",
+  "nav_list": "Liste de choses à faire",
+  "add": "Ajouter",
+  "primary": "Primaire",
+  "light": "Légère",
+  "dark": "Sombre",
+  "name": "Nom",
+  "status": "Statut",
+  "completed": "complété",
+  "incompleted": "incomplète",
+  "created_at": "Créé à",
+  "success_message_add": "Todo ajouté avec succès",
+  "smth_went_wrong": "Quelque chose s'est mal passé",
+  "status_changed_message": "Statut modifié"
+}

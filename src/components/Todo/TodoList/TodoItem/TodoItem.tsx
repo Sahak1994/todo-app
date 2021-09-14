@@ -1,6 +1,7 @@
 import {useContext, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import axios from 'api/axios';
+import { useTranslation } from 'react-i18next';
 
 import { ToastContainer, toast } from 'react-toastify';
 import { injectStyle } from "react-toastify/dist/inject-style";
@@ -16,6 +17,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
   name,
   status,
 }) => {
+  const {t} = useTranslation();
   const [statusLoading, setStatusLoading] = useState<boolean>(false);
   const location = useLocation();
   const {onUpdateTodoStatus} = useContext(TodosContext);
@@ -37,7 +39,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
         if (result.status === 200) {
           setStatusLoading(false);
           onUpdateTodoStatus(id, status === 'completed' ? 'incompleted' : 'completed');
-          toast.success("Status changed", {
+          toast.success(t('status_changed_message'), {
             autoClose: 2000,
             position: 'bottom-right',
           });
@@ -45,7 +47,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
       })
       .catch(error => {
         setStatusLoading(false);
-        toast.error(error?.message || 'Something went wrong!', {
+        toast.error(error?.message || `${t("smth_went_wrong")}!`, {
           autoClose: 2000,
           position: 'bottom-right',
         });

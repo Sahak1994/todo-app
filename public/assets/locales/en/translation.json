@@ -1,0 +1,17 @@
+{
+  "heading": "My Todo App",
+  "nav_add": "Add Todo",
+  "nav_list": "Todo List",
+  "add": "Add",
+  "primary": "Primary",
+  "light": "Light",
+  "dark": "Dark",
+  "name": "Name",
+  "status": "Status",
+  "completed": "completed",
+  "incompleted": "incompleted",
+  "created_at": "Created at",
+  "success_message_add": "Todo Added Successfully",
+  "smth_went_wrong": "Something went wrong",
+  "status_changed_message": "Status changed"
+}

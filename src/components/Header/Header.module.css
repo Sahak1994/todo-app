@@ -14,3 +14,7 @@
   width: 100%;
   z-index: 20;
 }
+
+.Icons {
+  display: flex;
+}

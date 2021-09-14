@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
 import axios from 'api/axios';
+import { useTranslation } from 'react-i18next';
 
 import TodosContext from 'context/todos-context';
 import themeContext from 'context/theme-context';
@@ -10,6 +11,7 @@ import { injectStyle } from "react-toastify/dist/inject-style";
 import classes from './AddTodo.module.css';
 
 const AddTodo = () => {
+  const {t} = useTranslation();
   const [todoText, setTodoText] = useState<string>('');
   const {onUpdateAddedTodoItem} = useContext(TodosContext);
   const theme = useContext(themeContext);
@@ -56,7 +58,7 @@ const AddTodo = () => {
           ...result,
         })
         
-        toast.success("Todo Added Successfully", {
+        toast.success(t("success_message_add"), {
           autoClose: 2000,
           position: 'bottom-right',
         });
@@ -64,7 +66,7 @@ const AddTodo = () => {
       .catch(error => {
         setTodoText('');
 
-        toast.error(error?.message || 'Something went wrong!', {
+        toast.error(error?.message || `${t("smth_went_wrong")}!`, {
           autoClose: 2000,
           position: 'bottom-right',
         });
@@ -80,7 +82,7 @@ const AddTodo = () => {
           type='text' 
           value={todoText} 
           onChange={onInputChange} />
-        <button style={buttonStyle}>Add</button>
+        <button style={buttonStyle}>{t('add')}</button>
       </form>
       <ToastContainer />
     </div>
