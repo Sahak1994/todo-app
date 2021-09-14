@@ -8,10 +8,18 @@ const ChangeLangContext = React.createContext({
 });
 
 export const ChangeLangPrvider: React.FC<ChangeLangPrviderProps> = (props) => {
-  const [lang, setLang] = useState<string>(cookies.get('i18next') || 'en');
-  const history = useHistory();
   const {pathname} = useLocation();
+
   const secondSlashIndex = pathname.indexOf('/', 1);
+  let code: string;
+  if (secondSlashIndex === -1) {
+    code = pathname.slice(pathname.indexOf('/') + 1);
+  } else {
+    code = pathname.slice(pathname.indexOf('/') + 1, secondSlashIndex);
+  }
+
+  const [lang, setLang] = useState<string>(cookies.get('i18next') || code);
+  const history = useHistory();
 
   useEffect(() => {
     cookies.set('i18next', lang);
