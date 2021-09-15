@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import cookies from 'js-cookie';
-import { useHistory, useLocation } from 'react-router-dom';
+// import { useHistory, useLocation } from 'react-router-dom';
 
 const ChangeLangContext = React.createContext({
   lang: 'en',
@@ -8,18 +8,18 @@ const ChangeLangContext = React.createContext({
 });
 
 export const ChangeLangPrvider: React.FC<ChangeLangPrviderProps> = (props) => {
-  const {pathname} = useLocation();
+  // const {pathname} = useLocation();
 
-  const secondSlashIndex = pathname.indexOf('/', 1);
-  let code: string;
-  if (secondSlashIndex === -1) {
-    code = pathname.slice(pathname.indexOf('/') + 1);
-  } else {
-    code = pathname.slice(pathname.indexOf('/') + 1, secondSlashIndex);
-  }
+  // const secondSlashIndex = pathname.indexOf('/', 1);
+  // let code: string;
+  // if (secondSlashIndex === -1) {
+  //   code = pathname.slice(pathname.indexOf('/') + 1);
+  // } else {
+  //   code = pathname.slice(pathname.indexOf('/') + 1, secondSlashIndex);
+  // }
 
-  const [lang, setLang] = useState<string>(cookies.get('i18next') || code);
-  const history = useHistory();
+  const [lang, setLang] = useState<string>(cookies.get('i18next') || 'en');
+  // const history = useHistory();
 
   useEffect(() => {
     cookies.set('i18next', lang);
@@ -27,11 +27,11 @@ export const ChangeLangPrvider: React.FC<ChangeLangPrviderProps> = (props) => {
 
   const changeLangage = (lang: string) => {
     setLang(lang);
-    if (secondSlashIndex === -1) {
-      history.replace('/' + lang);
-    } else {
-      history.replace('/' + lang + pathname.slice(secondSlashIndex));
-    }
+    // if (secondSlashIndex === -1) {
+    //   history.replace('/' + lang);
+    // } else {
+    //   history.replace('/' + lang + pathname.slice(secondSlashIndex));
+    // }
   }
 
   return (
